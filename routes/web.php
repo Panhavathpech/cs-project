@@ -18,7 +18,8 @@ Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/food', 'HomeController@food')->name('food');
 Route::get('/article', 'HomeController@article')->name('article');
 Route::get('/contact', 'HomeController@contact')->name('contact');
-
+Route::get('/auth/login', 'HomeController@login')->name('login');
+Route::get('/auth/register', 'HomeController@register')->name('register');
 
 
 Auth::routes();
