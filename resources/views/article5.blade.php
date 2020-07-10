@@ -120,11 +120,11 @@
                         <div class="col text-center">
                             <div class="block-27">
                                 <ul>
-                                    <li class="active"><span>1</span></li>
+                                    <li><a href="{{ route('article')}}">1</a></li>
                                     <li><a href="{{ route('article2')}}">2</a></li>
                                     <li><a href="{{ route('article3')}}">3</a></li>
                                     <li><a href="{{ route('article4')}}">4</a></li>
-                                    <li><a href="{{ route('article5')}}">5</a></li>
+                                    <li class="active"><span>5</span></li>
                                 </ul>
                             </div>
                         </div>

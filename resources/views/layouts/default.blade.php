@@ -35,10 +35,11 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="{{ route('home')}}" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="{{ route('about')}}" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="{{ route('food')}}" class="nav-link">Foods</a></li>
-                <li class="nav-item"><a href="{{ route('article')}}" class="nav-link">Food-Blog</a></li>
+                <li class="nav-item"><a href="{{ route('food')}}" class="nav-link">Western Dessert</a></li>
+                <li class="nav-item"><a href="{{ route('article')}}" class="nav-link">Khmer Dishes</a></li>
                 <li class="nav-item"><a href="{{ route('contact')}}" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}"
+                <li class="nav-item"><a href="#" class="nav-link"><i class="glyphicon-user"></i>User: {{ Auth::user()->name}}</a></li>
+                <li class=""><a class="nav-link" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                     Logout
@@ -54,6 +55,42 @@
 <!-- END nav -->
 
 @yield('content')
+
+<section class="ftco-subscribe ftco-section bg-light">
+        <div class="overlay">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-8 text-wrap text-center heading-section ftco-animate">
+                        <h2 class="mb-4"><span>Subcribe to our Newsletter</span></h2>
+                        <p>Subscribe to our Newsletter to recieve our latest published article on your favorite dishes!</p>
+                        <div class="row d-flex justify-content-center mt-4 mb-4">
+                            <div class="col-md-8">
+                                @if (session('success'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
+                                @if (session('failure'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ session('failure')}}
+                                    </div>
+                                @endif
+
+                                <form action="{{ url('/newsletter') }}" id="newsletter" method="post" class="subscribe-form">
+                                    {{csrf_field()}}
+                                    <div class="form-group d-flex">
+                                        <input type="text" name="email" class="form-control" placeholder="Enter email address">
+                                        <input type="submit" value="Subscribe" class="submit px-3 form-control">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <footer class="ftco-footer ftco-footer-2 ftco-section">
     <div class="container">
@@ -100,7 +137,7 @@
                         <ul>
                             <li><span class="icon icon-map-marker"></span><span class="text">Old Market, St.724, A8 & A9 The, Krong Kampot 07000</span></li>
                             <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                            <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@khmerrecipes.com</span></a></li>
+                            <li><a href="{{ route('contact')}}"><span class="icon icon-envelope"></span><span class="text">info@khmerrecipes.com</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -116,8 +153,6 @@
         </div>
     </div>
 </footer>
-
-
 
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>

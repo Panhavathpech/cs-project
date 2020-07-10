@@ -16,20 +16,29 @@
     <section class="ftco-section ftco-no-pb contact-section">
         <div class="container">
             <div class="row block-9">
-                <div class="col-md-6 order-md-last d-flex">
-                    <form action="#" class="bg-light p-5 contact-form">
+                <div class="col-md-6 order-md-last d-flex"> 
+                    <form action="{{ url('contact')}}" method="POST" class="bg-light p-5 contact-form">
+                    @if (session('message'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('message') }}
+                            </div>
+                        @endif  
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name">
+                            <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Your Name">
+                            <div>{{ $errors->first('name') }}</div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Email">
+                            <input type="text" name="email" class="form-control" value="{{ old('email') }}" placeholder="Your Email">
+                            <div>{{ $errors->first('email') }}</div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Subject">
+                            <input type="text" name="subject" class="form-control" value="{{ old('subject') }}" placeholder="Subject">
                         </div>
                         <div class="form-group">
-                            <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                            <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message">{{ old('message') }}</textarea>
+                            <div>{{ $errors->first('message') }}</div>
                         </div>
+                        @csrf
                         <div class="form-group">
                             <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
                         </div>
@@ -81,30 +90,6 @@
                         </div>
                         <h3 class="mb-4">Website</h3>
                         <p><a href="#">yoursite.com</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="ftco-subscribe ftco-section bg-light">
-        <div class="overlay">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-md-8 text-wrap text-center heading-section ftco-animate">
-                        <h2 class="mb-4"><span>Subcribe to our Newsletter</span></h2>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                        <div class="row d-flex justify-content-center mt-4 mb-4">
-                            <div class="col-md-8">
-                                <form action="#" class="subscribe-form">
-                                    <div class="form-group d-flex">
-                                        <input type="text" class="form-control" placeholder="Enter email address">
-                                        <input type="submit" value="Subscribe" class="submit px-3">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
