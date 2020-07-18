@@ -50,8 +50,8 @@ Route::get('/foodsarticle/fooda4', 'HomeController@fooda4')->name('fooda4');
 Route::get('/foodsarticle/fooda5', 'HomeController@fooda5')->name('fooda5');
 Route::get('/foodsarticle/fooda6', 'HomeController@fooda6')->name('fooda6');
 
-
-
+Route::resource('posts', 'PostsController');
+Route::resource('dashboard', 'DashboardController');
 
 Auth::routes();
 

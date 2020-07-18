@@ -28,7 +28,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-darken" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('home')}}">KhmerRecipes<span>.</span></a>
+        <a class="navbar-brand" href="{{ route('home')}}">KhmerRecipes Dashboard<span>.</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
         </button>
@@ -36,53 +36,29 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="{{ route('home')}}" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="{{ route('about')}}" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="/posts" class="nav-link">Khmer Dishes</a></li>
-                <li class="nav-item"><a href="{{ route('food')}}" class="nav-link">Western Dessert</a></li>
-                <li class="nav-item"><a href="{{ route('contact')}}" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="/dashboard" class="nav-link">Dashboard</a></li>
+                <li class="nav-item"><a href="/posts" class="nav-link">Posts</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="glyphicon-user"></i>User: {{ Auth::user()->name}}</a></li>
+                <li class=""><a class="nav-link" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form></li>
+            </ul>
+            <ul class="nav ml-auto navbar-nav navbar-right">
+                <li class="nav-item"><a href="/posts/create">Create Post</a></li>
             </ul>
         </div>
     </div>
 </nav>
 <!-- END nav -->
 
+@include('inc.messages')
 @yield('content')
-
-<section class="ftco-subscribe ftco-section bg-light">
-        <div class="overlay">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-md-8 text-wrap text-center heading-section ftco-animate">
-                        <h2 class="mb-4"><span>Subcribe to our Newsletter</span></h2>
-                        <p>Subscribe to our Newsletter to recieve our latest published article on your favorite dishes!</p>
-                        <div class="row d-flex justify-content-center mt-4 mb-4">
-                            <div class="col-md-8">
-                                @if (session('success'))
-                                    <div class="alert alert-success" role="alert">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
-
-                                @if (session('failure'))
-                                    <div class="alert alert-danger" role="alert">
-                                        {{ session('failure')}}
-                                    </div>
-                                @endif
-
-                                <form action="{{ url('/newsletter') }}" id="newsletter" method="post" class="subscribe-form">
-                                    {{csrf_field()}}
-                                    <div class="form-group d-flex">
-                                        <input type="text" name="email" class="form-control" placeholder="Enter email address">
-                                        <input type="submit" value="Subscribe" class="submit px-3 form-control">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
 <footer class="ftco-footer ftco-footer-2 ftco-section">
     <div class="container">
@@ -167,4 +143,3 @@
 <script src="{{ asset('js/main.js')}}"></script>
 
 </body>
-</html>

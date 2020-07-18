@@ -88,7 +88,7 @@
                 @csrf
 
                 <span class="login100-form-title">
-						Member Registration
+						Admin Registration
                     </span>
 
                 <div class="form-group row">
